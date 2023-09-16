@@ -1,0 +1,9 @@
+---
+vault_pass: ansible123!
+machine_pass: ansible123!
+controller_pass: ansible123!
+ah_pass: ansible123!
+controller_api_user_pass: ansible123!
+ah_token_password: ansible123!
+student_account: ansible123!
+...

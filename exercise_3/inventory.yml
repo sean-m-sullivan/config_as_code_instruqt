@@ -1,0 +1,13 @@
+---
+all:
+  children:
+    automationcontroller:
+      hosts:
+        control:
+    automationhub:
+      hosts:
+        hub:
+    builder:
+      hosts:
+        control:
+...
