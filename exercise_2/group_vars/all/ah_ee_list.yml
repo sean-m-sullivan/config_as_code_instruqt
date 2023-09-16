@@ -12,7 +12,7 @@ ee_list:
           - name: infra.ee_utilities
             version: 3.1.2
           - name: awx.awx
-            version: 22.4.0
+            version: 23.1.0
           - name: containers.podman
             version: 1.10.3
           - name: community.general
