@@ -9,4 +9,8 @@
     - name: Include ee_builder role
       ansible.builtin.include_role:
         name: infra.ee_utilities.ee_builder
+
+    - name: Add Execution Environment to controller
+      ansible.builtin.include_role:
+        name: infra.controller_configuration.execution_environments
 ...
