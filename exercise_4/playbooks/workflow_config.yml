@@ -5,5 +5,5 @@
     - "../vault.yml"
   connection: local
   roles:
-    - infra.controller_configuration.dispatch
+    - infra.controller_configuration.workflow_job_templates
 ...
