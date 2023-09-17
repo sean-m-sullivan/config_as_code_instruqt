@@ -23,13 +23,6 @@ workflow_job_templates:
           organization:
             name: config_as_code
           type: project
-      - identifier: Approve to config controller
-        related:
-          create_approval_template:
-            name: Approve to config controller
-            timeout: 600
-          success_nodes:
-            - identifier: Config Controller
       - identifier: Configure Hub
         related:
           always_nodes:
@@ -40,6 +33,15 @@ workflow_job_templates:
             name: config_as_code
             type: organization
           type: job_template
+      - identifier: Approve to config controller
+        unified_job_template:
+          description: Approval node to continue job
+          timeout: 900
+          type: workflow_approval
+          name: Approve to config controller
+        related:
+          success_nodes:
+            - identifier: Config Controller
       - identifier: Config Controller
         unified_job_template:
           name: controller_config
