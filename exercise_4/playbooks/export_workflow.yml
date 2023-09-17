@@ -1,0 +1,28 @@
+---
+- name: Export Workflow
+  hosts: automationcontroller
+  gather_facts: false
+  vars_files:
+    - "../vault.yml"
+  environment:
+    CONTROLLER_HOST: "{{ controller_hostname }}"
+    CONTROLLER_USERNAME: "{{ controller_username }}"
+    CONTROLLER_PASSWORD: "{{ controller_password }}"
+    CONTROLLER_VERIFY_SSL: "{{ controller_validate_certs }}"
+
+  tasks:
+    - name: Export workflow job template
+      awx.awx.export:
+        workflow_job_templates: Configuration Workflow
+      register: export_results
+      delegate_to: localhost
+
+    - name: Show the results
+      ansible.builtin.debug:
+        var: export_results
+
+    - name: Export workflow job template to file
+      ansible.builtin.copy:
+        content: "{{ export_results | to_nice_yaml( width=50, explicit_start=True, explicit_end=True) }}"
+        dest: /home/rhel/lab_exercises/group_vars/all/workflow.yaml
+...
