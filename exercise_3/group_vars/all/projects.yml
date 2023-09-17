@@ -1,4 +1,5 @@
 ---
+controller_configuration_projects_async_delay: 5
 controller_projects:
   - name: config_as_code
     description: execution environments configurations
