@@ -1,250 +1,50 @@
 ---
-assets:
-    workflow_job_templates:
-    -   allow_simultaneous: false
-        ask_inventory_on_launch: false
-        ask_labels_on_launch: false
-        ask_limit_on_launch: false
-        ask_scm_branch_on_launch: false
-        ask_skip_tags_on_launch: false
-        ask_tags_on_launch: false
-        ask_variables_on_launch: false
-        description: ''
-        extra_vars: '---'
-        inventory: null
-        job_tags: null
-        limit: null
-        name: Configuration Workflow
-        natural_key:
-            name: Configuration Workflow
-            organization: null
-            type: workflow_job_template
-        organization: null
+workflow_job_templates:
+  - name: Configuration Workflow
+    workflow_nodes:
+      - identifier: Sync Inventory
+        unified_job_template:
+          inventory:
+            name: config_as_code
+            organization:
+              name: config_as_code
+            type: inventory
+          name: controller_config_source
+          type: inventory_source
         related:
-            labels: []
-            notification_templates_approvals: []
-            notification_templates_error: []
-            notification_templates_started: []
-            notification_templates_success: []
-            schedules: []
-            survey_spec: {}
-            workflow_nodes:
-            -   all_parents_must_converge: false
-                diff_mode: null
-                execution_environment: null
-                extra_data: {}
-                forks: null
-                identifier: Sync Config Project
-                inventory: null
-                job_slice_count: null
-                job_tags: null
-                job_type: null
-                limit: null
-                natural_key:
-                    identifier: Sync Config Project
-                    type: workflow_job_template_node
-                    workflow_job_template:
-                        name: Configuration Workflow
-                        organization: null
-                        type: workflow_job_template
-                related:
-                    always_nodes:
-                    -   identifier: Configure Hub
-                        type: workflow_job_template_node
-                        workflow_job_template:
-                            name: Configuration Workflow
-                            organization: null
-                            type: workflow_job_template
-                    credentials: []
-                    failure_nodes: []
-                    success_nodes: []
-                scm_branch: null
-                skip_tags: null
-                timeout: null
-                unified_job_template:
-                    name: config_as_code
-                    organization:
-                        name: config_as_code
-                        type: organization
-                    type: project
-                verbosity: null
-                workflow_job_template:
-                    name: Configuration Workflow
-                    organization: null
-                    type: workflow_job_template
-            -   all_parents_must_converge: false
-                diff_mode: null
-                execution_environment: null
-                extra_data: {}
-                forks: null
-                identifier: Approve to config controller
-                inventory: null
-                job_slice_count: null
-                job_tags: null
-                job_type: null
-                limit: null
-                natural_key:
-                    identifier: Approve to config controller
-                    type: workflow_job_template_node
-                    workflow_job_template:
-                        name: Configuration Workflow
-                        organization: null
-                        type: workflow_job_template
-                related:
-                    always_nodes: []
-                    create_approval_template:
-                        description: ''
-                        name: Approve to config controller
-                        timeout: 600
-                    credentials: []
-                    failure_nodes: []
-                    success_nodes:
-                    -   identifier: Config Controller
-                        type: workflow_job_template_node
-                        workflow_job_template:
-                            name: Configuration Workflow
-                            organization: null
-                            type: workflow_job_template
-                scm_branch: null
-                skip_tags: null
-                timeout: null
-                verbosity: null
-                workflow_job_template:
-                    name: Configuration Workflow
-                    organization: null
-                    type: workflow_job_template
-            -   all_parents_must_converge: false
-                diff_mode: null
-                execution_environment: null
-                extra_data: {}
-                forks: null
-                identifier: Sync Inventory
-                inventory: null
-                job_slice_count: null
-                job_tags: null
-                job_type: null
-                limit: null
-                natural_key:
-                    identifier: Sync Inventory
-                    type: workflow_job_template_node
-                    workflow_job_template:
-                        name: Configuration Workflow
-                        organization: null
-                        type: workflow_job_template
-                related:
-                    always_nodes:
-                    -   identifier: Configure Hub
-                        type: workflow_job_template_node
-                        workflow_job_template:
-                            name: Configuration Workflow
-                            organization: null
-                            type: workflow_job_template
-                    credentials: []
-                    failure_nodes: []
-                    success_nodes: []
-                scm_branch: null
-                skip_tags: null
-                timeout: null
-                unified_job_template:
-                    inventory:
-                        name: config_as_code
-                        organization:
-                            name: config_as_code
-                            type: organization
-                        type: inventory
-                    name: controller_config_source
-                    type: inventory_source
-                verbosity: null
-                workflow_job_template:
-                    name: Configuration Workflow
-                    organization: null
-                    type: workflow_job_template
-            -   all_parents_must_converge: false
-                diff_mode: null
-                execution_environment: null
-                extra_data: {}
-                forks: null
-                identifier: Configure Hub
-                inventory: null
-                job_slice_count: null
-                job_tags: null
-                job_type: null
-                limit: null
-                natural_key:
-                    identifier: Configure Hub
-                    type: workflow_job_template_node
-                    workflow_job_template:
-                        name: Configuration Workflow
-                        organization: null
-                        type: workflow_job_template
-                related:
-                    always_nodes:
-                    -   identifier: Approve to config
-                            controller
-                        type: workflow_job_template_node
-                        workflow_job_template:
-                            name: Configuration Workflow
-                            organization: null
-                            type: workflow_job_template
-                    credentials: []
-                    failure_nodes: []
-                    success_nodes: []
-                scm_branch: null
-                skip_tags: null
-                timeout: null
-                unified_job_template:
-                    name: ah_config
-                    organization:
-                        name: config_as_code
-                        type: organization
-                    type: job_template
-                verbosity: null
-                workflow_job_template:
-                    name: Configuration Workflow
-                    organization: null
-                    type: workflow_job_template
-            -   all_parents_must_converge: false
-                diff_mode: null
-                execution_environment: null
-                extra_data: {}
-                forks: null
-                identifier: Config Controller
-                inventory: null
-                job_slice_count: null
-                job_tags: null
-                job_type: null
-                limit: null
-                natural_key:
-                    identifier: Config Controller
-                    type: workflow_job_template_node
-                    workflow_job_template:
-                        name: Configuration Workflow
-                        organization: null
-                        type: workflow_job_template
-                related:
-                    always_nodes: []
-                    credentials: []
-                    failure_nodes: []
-                    success_nodes: []
-                scm_branch: null
-                skip_tags: null
-                timeout: null
-                unified_job_template:
-                    name: controller_config
-                    organization:
-                        name: config_as_code
-                        type: organization
-                    type: job_template
-                verbosity: null
-                workflow_job_template:
-                    name: Configuration Workflow
-                    organization: null
-                    type: workflow_job_template
-        scm_branch: null
-        skip_tags: null
-        survey_enabled: false
-        webhook_credential: null
-        webhook_service: ''
-changed: false
-failed: false
+          always_nodes:
+            - identifier: Configure Hub
+      - identifier: Sync Config Project
+        related:
+          always_nodes:
+            - identifier: Configure Hub
+        unified_job_template:
+          name: config_as_code
+          organization:
+            name: config_as_code
+          type: project
+      - identifier: Approve to config controller
+        related:
+          create_approval_template:
+            name: Approve to config controller
+            timeout: 600
+          success_nodes:
+            - identifier: Config Controller
+      - identifier: Configure Hub
+        related:
+          always_nodes:
+            - identifier: Approve to config controller
+        unified_job_template:
+          name: ah_config
+          organization:
+            name: config_as_code
+            type: organization
+          type: job_template
+      - identifier: Config Controller
+        unified_job_template:
+          name: controller_config
+          organization:
+            name: config_as_code
+            type: organization
+          type: job_template
 ...
