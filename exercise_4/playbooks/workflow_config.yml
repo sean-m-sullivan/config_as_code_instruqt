@@ -3,7 +3,7 @@
   hosts: all
   vars_files:
     - "../vault.yml"
-    connection: local
+  connection: local
   roles:
     - infra.controller_configuration.dispatch
 ...
