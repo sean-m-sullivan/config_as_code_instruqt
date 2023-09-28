@@ -1,0 +1,24 @@
+---
+# This workflow action will run pre-commit, which will execute ansible and yaml linting
+# See .pre-commit-config.yaml for what hooks are executed
+name: pre-commit tests
+
+
+on:
+  pull_request:
+  push:
+  schedule:
+    - cron: "0 6 * * *"
+
+jobs:
+  pre-commit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+      - name: Install Ansible
+        run: pip install --upgrade ansible-core pyyaml==6.0.1
+      - uses: pre-commit/action@v3.0.0
+...
