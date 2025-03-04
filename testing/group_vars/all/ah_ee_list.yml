@@ -18,7 +18,7 @@ ee_list:
           - name: community.general
             version: 7.3.0
 
-ee_base_image: "{{ ah_host }}/ee-minimal-rhel8:latest"
+ee_base_image: "{{ aap_hostname }}/ee-minimal-rhel8:latest"
 ee_image_push: true
 ee_prune_images: false
 ee_create_ansible_config: false

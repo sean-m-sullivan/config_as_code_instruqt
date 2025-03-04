@@ -12,5 +12,5 @@
 
     - name: Add Execution Environment to controller
       ansible.builtin.include_role:
-        name: infra.controller_configuration.execution_environments
+        name: infra.aap_configuration.execution_environments
 ...
