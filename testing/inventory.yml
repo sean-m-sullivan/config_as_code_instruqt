@@ -1,0 +1,16 @@
+---
+all:
+  children:
+    automationcontroller:
+      hosts:
+        control:
+          ansible_host: "{{ 'controller-443-' + lookup('ansible.builtin.env', 'INSTRUQT_PARTICIPANT_ID') + '.env.play.instruqt.com' }}"
+    builder:
+      hosts:
+        control:
+          ansible_host: "{{ 'controller-443-' + lookup('ansible.builtin.env', 'INSTRUQT_PARTICIPANT_ID') + '.env.play.instruqt.com' }}"
+    execution:
+      hosts:
+        localhost:
+          ansible_connection: local
+...

@@ -1,0 +1,15 @@
+---
+aap_hostname: "{{ aap_hostname | default( 'control.' + lookup('ansible.builtin.env', 'INSTRUQT_PARTICIPANT_ID') + '.instruqt.io' )}}"
+aap_username: "{{ aap_username | default('admin') }}"
+aap_password: "{{ aap_password }}"
+aap_validate_certs: false
+aap_request_timeout: 60
+
+ee_registry_username: "{{ aap_username | default('admin') }}"
+ee_registry_password: "{{ aap_password }}"
+ee_registry_dest: "{{ aap_hostname }}"
+
+ee_base_registry: "{{ aap_hostname }}"
+ee_base_registry_username: "{{ aap_username }}"
+ee_base_registry_password: "{{ aap_password }}"
+...
