@@ -33,7 +33,7 @@
 
     - name: Add Execution Environment to controller
       ansible.builtin.include_role:
-        name: infra.aap_configuration.controller_execution_environments
+        name: infra.aap_configuration.execution_environments
       vars:
         controller_execution_environments:
           - image: "{{ aap_hostname }}/config_as_code"

@@ -22,6 +22,6 @@ ee_base_image: "{{ aap_hostname }}/ee-minimal-rhel8:latest"
 ee_image_push: true
 ee_prune_images: false
 ee_create_ansible_config: false
-ee_pull_collections_from_hub: false
 ee_create_controller_def: true
+ee_validate_certs: false
 ...

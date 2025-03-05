@@ -1,5 +1,5 @@
 ---
-ah_collection_remotes:
+hub_collection_remotes:
   - name: community-infra
     url: https://galaxy.ansible.com/
     requirements:
@@ -20,7 +20,7 @@ ah_collection_remotes:
       - name: infra.eda_configuration
         version: ">=1.0.0"
 
-ah_collection_repositories:
+hub_collection_repositories:
   - name: community-infra-repo
     description: "description of community-infra repository"
     pulp_labels:
