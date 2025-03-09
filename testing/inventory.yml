@@ -4,11 +4,7 @@ all:
     automationcontroller:
       hosts:
         control:
-          ansible_host: aap.medina.vaultcrest.com # "{{ 'controller-443-' + lookup('ansible.builtin.env', 'INSTRUQT_PARTICIPANT_ID') + '.env.play.instruqt.com' }}"
-    builder:
-      hosts:
-        control:
-          ansible_host: aap.medina.vaultcrest.com # "{{ 'controller-443-' + lookup('ansible.builtin.env', 'INSTRUQT_PARTICIPANT_ID') + '.env.play.instruqt.com' }}"
+          ansible_host: "{{ 'controller.' + lookup('ansible.builtin.env', 'GUID') + '.sandbox2741.opentlc.com' }}"
     execution:
       hosts:
         localhost:

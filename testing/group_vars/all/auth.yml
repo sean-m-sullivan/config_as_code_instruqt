@@ -1,6 +1,6 @@
 ---
-aap_hostname: aap.medina.vaultcrest.com # "{{ 'controller-443-' + lookup('ansible.builtin.env', 'INSTRUQT_PARTICIPANT_ID') + '.env.play.instruqt.com' }}"
-aap_username: admin
+aap_hostname: "{{ 'controller.' + lookup('ansible.builtin.env', 'GUID') + '.sandbox2741.opentlc.com' }}"
+aap_username: lab-user
 aap_password: "{{ aap_password }}"
 aap_validate_certs: false
 aap_request_timeout: 60
@@ -9,7 +9,7 @@ aap_request_timeout: 60
 ah_host: aap.medina.vaultcrest.com
 ee_pull_collections_from_hub: false
 
-ee_registry_username: admin
+ee_registry_username: lab-user
 ee_registry_password: "{{ aap_password }}"
 ee_registry_dest: "{{ aap_hostname }}/config"
 

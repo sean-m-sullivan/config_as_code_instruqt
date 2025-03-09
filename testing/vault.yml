@@ -1,7 +1,7 @@
 ---
-vault_pass: password123!
-machine_pass: password123!
-aap_password: password123!
-ah_token_password: password123!
-student_account: password123!
+vault_pass: ###REPLACEME
+machine_pass: ###REPLACEME
+aap_password: ###REPLACEME
+ah_token_password: ###REPLACEME
+student_account: ###REPLACEME
 ...

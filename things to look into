@@ -1,0 +1,5 @@
+pip install ansible-builder
+install ansible.cfg file for hub?
+install initial collections?
+containers.podman:1.16.3
+infra.ee_utilities:4.0.0
