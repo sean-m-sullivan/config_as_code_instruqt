@@ -1,0 +1,9 @@
+---
+- name: Playbook to configure workflows
+  hosts: all
+  vars_files:
+    - "../vault.yml"
+  connection: local
+  roles:
+    - infra.aap_configuration.controller_workflow_job_templates
+...

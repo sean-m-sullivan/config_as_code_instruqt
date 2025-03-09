@@ -1,0 +1,42 @@
+---
+controller_workflows:
+  - name: Configuration Workflow
+    workflow_nodes:
+      - identifier: Sync Inventory
+        unified_job_template:
+          inventory:
+            name: config_as_code
+            organization:
+              name: config_as_code
+            type: inventory
+          name: controller_config_source
+          type: inventory_source
+        related:
+          always_nodes:
+            - identifier: Approve to config controller
+      - identifier: Sync Config Project
+        related:
+          always_nodes:
+            - identifier: Approve to config controller
+        unified_job_template:
+          name: config_as_code
+          organization:
+            name: config_as_code
+          type: project
+      - identifier: Approve to config controller
+        unified_job_template:
+          description: Approval node to continue job
+          timeout: 900
+          type: workflow_approval
+          name: Approve to config controller
+        related:
+          success_nodes:
+            - identifier: Config Controller
+      - identifier: Config Controller
+        unified_job_template:
+          name: aap_config
+          organization:
+            name: config_as_code
+            type: organization
+          type: job_template
+...

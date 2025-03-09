@@ -1,0 +1,22 @@
+---
+controller_execution_environments:
+  - name: "supported"
+    image: "{{ aap_hostname }}/ee-supported-rhel8"
+    pull: always
+    credential: cr_ah
+
+  - name: "minimal"
+    image: "{{ aap_hostname }}/ee-minimal-rhel8"
+    pull: always
+    credential: cr_ah
+
+  - name: "old_29_ee"
+    image: "{{ aap_hostname }}/ee-29-rhel8"
+    pull: always
+    credential: cr_ah
+
+  - name: "config_as_code"
+    image: "{{ aap_hostname }}/config_as_code"
+    pull: always
+    credential: cr_ah
+...
