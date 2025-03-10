@@ -4,7 +4,7 @@ all:
     automationcontroller:
       hosts:
         control:
-          ansible_host: "{{ 'controller.' + lookup('ansible.builtin.env', 'GUID') + '.sandbox####.opentlc.com' }}"
+          ansible_host: "{{ 'controller.' + lookup('ansible.builtin.env', 'GUID') + '.sandbox' + sandbox_id + '.opentlc.com' }}"
     execution:
       hosts:
         localhost:

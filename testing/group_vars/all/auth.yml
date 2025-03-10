@@ -1,5 +1,7 @@
 ---
-aap_hostname: "{{ 'controller.' + lookup('ansible.builtin.env', 'GUID') + '.sandbox####.opentlc.com' }}"
+sandbox_id: ####
+
+aap_hostname: "{{ 'controller.' + lookup('ansible.builtin.env', 'GUID') + '.sandbox' + sandbox_id + '.opentlc.com' }}"
 aap_username: lab-user
 aap_password: "{{ aap_password }}"
 aap_validate_certs: false
