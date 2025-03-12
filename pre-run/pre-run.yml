@@ -58,8 +58,8 @@
       ansible.builtin.git:
         repo: https://github.com/sean-m-sullivan/config_as_code_instruqt.git
         dest: /home/lab-user/casc_lab/
-        single_branch: yes
-        version: base_files
+        #single_branch: yes
+        #version: base_files
 
     - name: Fix Podman upload
       ansible.builtin.lineinfile:
@@ -73,4 +73,11 @@
         name: nginx
         state: restarted
       become: true
+
+    - name: Fix sandboxid env
+      ansible.builtin.lineinfile:
+        path: /home/lab-user/.bashrc
+        line: 'export SANDBOXID={{ sandbox_id }}'
+      become: true
+
 ...
