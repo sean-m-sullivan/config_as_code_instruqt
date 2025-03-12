@@ -1,0 +1,76 @@
+---
+- name: Configure private automation hub after installation
+  hosts: execution
+  gather_facts: false
+  connection: local
+  vars:
+    sandbox_id: '2843' # HOW do I know this???
+    aap_username: lab-user
+    aap_password: MjgxMTU0
+    aap_validate_certs: false
+    aap_configuration_working_dir: /home/lab-user
+    aap_hostname: "{{ 'controller.' + lookup('ansible.builtin.env', 'GUID') + '.sandbox' + sandbox_id + '.opentlc.com' }}"
+    ansible_config_list:
+      - header: galaxy
+        keypairs:
+          - key: ignore_certs
+            value: "{{ not (aap_validate_certs | bool) }}"
+          - key: server_list
+            value: "{{ automation_hub_list | map(attribute='name') | join(',') }}"
+
+  tasks:
+    - name: Install ansible-builder python package
+      ansible.builtin.pip:
+        name: ansible-builder==3.1.0
+
+    - name: Authenticate and get an API token from Automation Hub
+      ansible.hub.ah_token:
+        ah_host: "{{ aap_hostname }}"
+        ah_username: "{{ aap_username  }}"
+        ah_password: "{{ aap_password }}"
+        ah_path_prefix: 'galaxy'  # this is for private automation hub
+        ah_verify_ssl: false
+
+    - name: install ansible collections
+      ansible.builtin.command: ansible-galaxy collection install -r requirements.yml
+
+    - name: Setting hub repo facts
+      ansible.builtin.set_fact:
+        automation_hub_list:
+          - name: rh-certified 
+            url: "https://{{aap_hostname}}/pulp_ansible/galaxy/rh-certified/"
+            token: "{{ ah_token['token'] }}"
+          - name: validated
+            url: "https://{{aap_hostname}}/pulp_ansible/galaxy/validated/"
+            token: "{{ ah_token['token'] }}"
+          - name: community
+            url: "https://{{aap_hostname}}/pulp_ansible/galaxy/community/"
+            token: "{{ ah_token['token'] }}"
+
+    - name: Include ansible config generator
+      ansible.builtin.include_role:
+        name: infra.aap_configuration.ansible_config
+
+    - name: install ansible collections
+      ansible.builtin.command: ansible-galaxy collection install ansible.platform:==2.5.20250213 ansible.controller:==4.6.8
+
+    - name: Example clone of a single branch
+      ansible.builtin.git:
+        repo: https://github.com/sean-m-sullivan/config_as_code_instruqt.git
+        dest: /home/lab-user/casc_lab/
+        single_branch: yes
+        version: base_files
+
+    - name: Fix Podman upload
+      ansible.builtin.lineinfile:
+        path: /etc/nginx/nginx.conf
+        insertafter: '    keepalive_timeout   65;'
+        line: '    client_max_body_size 0;'
+      become: true
+
+    - name: Restart service nginx
+      ansible.builtin.service:
+        name: nginx
+        state: restarted
+      become: true
+...

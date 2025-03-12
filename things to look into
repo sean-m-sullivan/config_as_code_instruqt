@@ -3,3 +3,30 @@ install ansible.cfg file for hub?
 install initial collections?
 containers.podman:1.16.3
 infra.ee_utilities:4.0.0
+infra.aap_configuration: 3.1.0
+ansible.platform
+
+ansible.hub
+
+Galaxy config
+
+sandbox# in the env???
+
+ansible-galaxy collection install infra.ee_utilities containers.podman
+
+
+http max client body
+podman 413 # disable any limits to avoid HTTP 413 for large image uploads client_max_body_size 0;
+/etc/nginx/nginx.conf.
+http {
+    ...
+    # disable any limits to avoid HTTP 413 for large image uploads
+    client_max_body_size 0;
+    ...
+}
+
+[galaxy] 
+server_list = rh-certified 
+[galaxy_server.rh-certified] 
+url = https://controller.psqqg.sandbox3219.opentlc.com/pulp_ansible/galaxy/rh-certified/
+token=4256ea305b753254865fe9a1ad94600d80fd0d71  

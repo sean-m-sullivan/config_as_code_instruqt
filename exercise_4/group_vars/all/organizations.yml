@@ -4,6 +4,6 @@ controller_organizations:
     galaxy_credentials:
       - ah_published
       - ah_certified
-      - community-infra-repo
+      - ah_community
     default_environment: supported
 ...

@@ -1,0 +1,11 @@
+---
+collections:
+- name: containers.podman
+  version: 1.16.3
+- name: infra.ee_utilities
+  version: 4.0.0
+- name: infra.aap_configuration
+  version: 3.1.0
+- name: ansible.hub
+  version: 1.0.0
+...
