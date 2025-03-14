@@ -1,6 +1,10 @@
 ---
 all:
   children:
+    controller:
+      hosts:
+        controller:
+          ansible_host: controller
     execution:
       hosts:
         localhost:

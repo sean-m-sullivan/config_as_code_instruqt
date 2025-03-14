@@ -4,11 +4,11 @@
   gather_facts: false
   connection: local
   vars:
-    sandbox_id: '2843' # HOW do I know this???
+    sandbox_id: '2042' # HOW do I know this???
     aap_username: lab-user
-    aap_password: MjgxMTU0
+    aap_password: MTgzMDg1
     aap_validate_certs: false
-    aap_configuration_working_dir: /home/lab-user
+    aap_configuration_working_dir: /etc/ansible/ansible.cfg
     aap_hostname: "{{ 'controller.' + lookup('ansible.builtin.env', 'GUID') + '.sandbox' + sandbox_id + '.opentlc.com' }}"
     ansible_config_list:
       - header: galaxy
@@ -58,9 +58,21 @@
       ansible.builtin.git:
         repo: https://github.com/sean-m-sullivan/config_as_code_instruqt.git
         dest: /home/lab-user/casc_lab/
-        #single_branch: yes
-        #version: base_files
+        single_branch: yes
+        version: base_files
 
+    - name: Fix sandboxid env
+      ansible.builtin.lineinfile:
+        path: /home/lab-user/.bashrc
+        line: 'export SANDBOXID={{ sandbox_id }}'
+      become: true
+
+
+- name: Configure private automation hub after installation
+  hosts: controller
+  gather_facts: false
+
+  tasks:
     - name: Fix Podman upload
       ansible.builtin.lineinfile:
         path: /etc/nginx/nginx.conf
@@ -74,10 +86,5 @@
         state: restarted
       become: true
 
-    - name: Fix sandboxid env
-      ansible.builtin.lineinfile:
-        path: /home/lab-user/.bashrc
-        line: 'export SANDBOXID={{ sandbox_id }}'
-      become: true
 
 ...

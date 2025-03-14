@@ -1,0 +1,13 @@
+    sandbox_id: '2042' # HOW do I know this???
+    aap_username: lab-user
+    aap_password: MTgzMDg1
+    aap_validate_certs: false
+    aap_configuration_working_dir: /home/lab-user
+    aap_hostname: "{{ 'controller.' + lookup('ansible.builtin.env', 'GUID') + '.sandbox' + sandbox_id + '.opentlc.com' }}"
+    ansible_config_list:
+      - header: galaxy
+        keypairs:
+          - key: ignore_certs
+            value: "{{ not (aap_validate_certs | bool) }}"
+          - key: server_list
+            value: "{{ automation_hub_list | map(attribute='name') | join(',') }}"
