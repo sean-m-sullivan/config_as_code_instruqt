@@ -8,7 +8,7 @@
     aap_username: lab-user
     aap_password: MTgzMDg1
     aap_validate_certs: false
-    aap_configuration_working_dir: /etc/ansible/ansible.cfg
+    aap_configuration_working_dir: "{{ playbook_dir  }}"
     aap_hostname: "{{ 'controller.' + lookup('ansible.builtin.env', 'GUID') + '.sandbox' + sandbox_id + '.opentlc.com' }}"
     ansible_config_list:
       - header: galaxy
