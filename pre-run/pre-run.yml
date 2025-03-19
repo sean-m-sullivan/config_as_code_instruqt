@@ -76,7 +76,7 @@
     - name: Fix Podman upload
       ansible.builtin.lineinfile:
         path: /etc/nginx/nginx.conf
-        insertafter: '    keepalive_timeout   65;'
+        insertafter: '    # Redirect HTTP to HTTP'
         line: '    client_max_body_size 0;'
       become: true
 
