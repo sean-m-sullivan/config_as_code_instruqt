@@ -76,8 +76,8 @@
     - name: Fix Podman upload
       ansible.builtin.lineinfile:
         path: /home/lab-user/aap/gateway/nginx/etc/nginx.conf
-        regexp: '^#        client_max_body_size 5m;'
-        line: '    client_max_body_size 0;'
+        regexp: '.*client_max_body_size 5m;'
+        line: '        client_max_body_size 100m;'
       become: true
 
     - name: Restart service nginx
