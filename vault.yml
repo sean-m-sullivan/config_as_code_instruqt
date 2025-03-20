@@ -1,0 +1,6 @@
+---
+vault_pass: ###REPLACEME
+aap_password: ###REPLACEME
+aap_service_account_password: ###REPLACEME
+student_account: ###REPLACEME
+...
