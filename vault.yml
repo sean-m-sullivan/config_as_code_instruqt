@@ -1,6 +1,7 @@
 ---
 vault_pass: ###REPLACEME
 aap_password: ###REPLACEME
+machine_pass: ###REPLACEME
 aap_service_account_password: ###REPLACEME
 student_account: ###REPLACEME
 ...
