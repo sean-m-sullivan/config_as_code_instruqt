@@ -5,23 +5,38 @@ ee_list:
     dependencies:
       galaxy:
         collections:
-          - name: infra.controller_configuration
-            version: 2.5.1
-          - name: infra.ah_configuration
-            version: 2.0.3
+          - name: infra.aap_configuration
+            version: 3.1.0
           - name: infra.ee_utilities
-            version: 3.1.2
-          - name: awx.awx
-            version: 23.1.0
+            version: 4.0.0
+          - name: ansible.platform
+            version: 2.5.20250213
+          - name: ansible.hub
+            version: 1.0.0
+          - name: ansible.controller
+            version: 4.6.8
           - name: containers.podman
-            version: 1.10.3
+            version: 1.16.3
           - name: community.general
-            version: 7.3.0
+            version: 10.4.0
+    build_files:
+      - src: /home/lab-user/casc_lab/ansible.cfg
+        dest: configs
+    build_steps:
+      prepend_galaxy:
+        - COPY _build/configs/ansible.cfg /etc/ansible/ansible.cfg
+ee_build_arg_defaults:
+  ANSIBLE_GALAXY_CLI_COLLECTION_OPTS: '-vvvv'
+
+
+
+prepend_galaxy:
+  - COPY _build/configs/ansible.cfg /etc/ansible/ansible.cfg
 
 ee_base_image: "{{ aap_hostname }}/ee-minimal-rhel8:latest"
 ee_image_push: true
 ee_prune_images: false
 ee_create_ansible_config: false
+ee_pull_collections_from_hub: true
 ee_create_controller_def: true
-ee_validate_certs: false
 ...
