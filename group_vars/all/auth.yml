@@ -1,3 +1,19 @@
 ---
-sandbox_id: '###REPLACEME'
-...
+sandbox_id: '2948'
+aap_hostname: "{{ 'controller.' + lookup('ansible.builtin.env', 'GUID') + '.sandbox' + sandbox_id + '.opentlc.com' }}"
+aap_username: lab-user
+aap_password: "{{ aap_password }}"
+aap_validate_certs: false
+aap_request_timeout: 60
+
+ee_pull_collections_from_hub: false
+aap_token_username: aap_service_account
+
+ee_registry_username: lab-user
+ee_registry_password: "{{ aap_password }}"
+ee_registry_dest: "{{ aap_hostname }}/config"
+
+ee_base_registry: "{{ aap_hostname }}"
+ee_base_registry_username: "{{ aap_username }}"
+ee_base_registry_password: "{{ aap_password }}"
+ee_validate_certs: false

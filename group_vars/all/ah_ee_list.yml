@@ -1,0 +1,42 @@
+---
+ee_list:
+  - name: "config_as_code"
+    pull: always
+    dependencies:
+      galaxy:
+        collections:
+          - name: infra.aap_configuration
+            version: 3.1.0
+          - name: infra.ee_utilities
+            version: 4.0.0
+          - name: ansible.platform
+            version: 2.5.20250213
+          - name: ansible.hub
+            version: 1.0.0
+          - name: ansible.controller
+            version: 4.6.8
+          - name: containers.podman
+            version: 1.16.3
+          - name: community.general
+            version: 10.4.0
+    build_files:
+      - src: /home/lab-user/casc_lab/ansible.cfg
+        dest: configs
+    build_steps:
+      prepend_galaxy:
+        - COPY _build/configs/ansible.cfg /etc/ansible/ansible.cfg
+ee_build_arg_defaults:
+  ANSIBLE_GALAXY_CLI_COLLECTION_OPTS: '-vvvv'
+
+
+
+prepend_galaxy:
+  - COPY _build/configs/ansible.cfg /etc/ansible/ansible.cfg
+
+ee_base_image: "{{ aap_hostname }}/ee-minimal-rhel8:latest"
+ee_image_push: true
+ee_prune_images: false
+ee_create_ansible_config: false
+ee_pull_collections_from_hub: true
+ee_create_controller_def: true
+...
