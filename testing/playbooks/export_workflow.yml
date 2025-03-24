@@ -1,0 +1,28 @@
+---
+- name: Export Workflow
+  hosts: execution
+  gather_facts: false
+  vars_files:
+    - "../vault.yml"
+  environment:
+    CONTROLLER_HOST: "{{ aap_hostname }}"
+    CONTROLLER_USERNAME: "{{ aap_username }}"
+    CONTROLLER_PASSWORD: "{{ aap_password }}"
+    CONTROLLER_VERIFY_SSL: "{{ aap_validate_certs }}"
+
+  tasks:
+    - name: Export workflow job template
+      ansible.controller.export:
+        workflow_job_templates: Configuration Workflow
+      register: export_results
+      delegate_to: localhost
+
+    - name: Show the results
+      ansible.builtin.debug:
+        var: export_results
+
+    - name: Export workflow job template to file
+      ansible.builtin.copy:
+        content: "{{ export_results | to_nice_yaml( width=50, explicit_start=True, explicit_end=True) }}"
+        dest: /home/lab-user/casc_lab/workflow_export.yaml
+...

@@ -5,7 +5,7 @@ controller_projects:
     description: execution environments configurations
     organization: config_as_code
     scm_type: git
-    scm_url: https://github.com/sean-m-sullivan/aap_configuration_template.git
+    scm_url: https://github.com/redhat-cop/aap_configuration_template
     scm_branch: ""
     scm_clean: true
     scm_update_on_launch: true
