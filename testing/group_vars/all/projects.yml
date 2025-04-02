@@ -2,7 +2,7 @@
 controller_configuration_projects_async_delay: 5
 controller_projects:
   - name: config_as_code
-    description: execution environments configurations
+    description: ansible automation configurations
     organization: config_as_code
     scm_type: git
     scm_url: https://github.com/redhat-cop/aap_configuration_template
