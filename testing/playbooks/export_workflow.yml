@@ -1,19 +1,19 @@
 ---
 - name: Export Workflow
-  hosts: execution
+  hosts: localhost
   gather_facts: false
   vars_files:
     - "../vault.yml"
   environment:
-    CONTROLLER_HOST: "{{ aap_hostname }}"
-    CONTROLLER_USERNAME: "{{ aap_username }}"
-    CONTROLLER_PASSWORD: "{{ aap_password }}"
-    CONTROLLER_VERIFY_SSL: "{{ aap_validate_certs }}"
+    CONTROLLER_HOST: aap.medina.vaultcrest.com/
+    CONTROLLER_USERNAME: admin
+    CONTROLLER_PASSWORD: password123!
+    CONTROLLER_VERIFY_SSL: false
 
   tasks:
     - name: Export workflow job template
       ansible.controller.export:
-        workflow_job_templates: Configuration Workflow
+        all: true
       register: export_results
       delegate_to: localhost
 
