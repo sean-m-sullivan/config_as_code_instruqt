@@ -1,5 +1,5 @@
 ---
-sandbox_id: ####
+sandbox_id: '###REPLACEME'
 
 aap_hostname: "{{ 'controller.' + lookup('ansible.builtin.env', 'GUID') + '.sandbox' + sandbox_id + '.opentlc.com' }}"
 aap_username: lab-user
@@ -18,3 +18,4 @@ ee_base_registry: "{{ aap_hostname }}"
 ee_base_registry_username: "{{ aap_username }}"
 ee_base_registry_password: "{{ aap_password }}"
 ee_validate_certs: false
+---
