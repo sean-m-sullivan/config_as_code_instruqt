@@ -1,5 +1,0 @@
----
-sandbox_id: '###REPLACEME'
-
-aap_hostname: "{{ 'controller.' + lookup('ansible.builtin.env', 'GUID') + '.sandbox' + sandbox_id + '.opentlc.com' }}"
-...
