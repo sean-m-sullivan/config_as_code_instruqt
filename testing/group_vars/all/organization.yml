@@ -2,8 +2,9 @@
 aap_organizations:
   - name: config_as_code
     galaxy_credentials:
-      - ah_published
-      - ah_certified
-      - community
+      - hub_certified
+      - hub_published
+      - hub_community_infra_repo
+      - hub_community
     default_environment: supported
 ...

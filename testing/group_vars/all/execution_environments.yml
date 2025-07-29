@@ -10,13 +10,8 @@ controller_execution_environments:
     pull: always
     credential: cr_ah
 
-  - name: "old_29_ee"
-    image: "{{ aap_hostname }}/ee-29-rhel8"
-    pull: always
-    credential: cr_ah
-
   - name: "config_as_code"
-    image: "{{ aap_hostname }}/config_as_code"
+    image: "{{ aap_hostname }}/config_as_code "
     pull: always
     credential: cr_ah
 ...

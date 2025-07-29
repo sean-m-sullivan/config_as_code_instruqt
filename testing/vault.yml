@@ -1,7 +1,4 @@
----
-vault_pass: MjgxMTU0 ###REPLACEME
-machine_pass: MjgxMTU0 ###REPLACEME
-aap_password: MjgxMTU0 ###REPLACEME
-ah_token_password: MjgxMTU0 ###REPLACEME
-student_account: MjgxMTU0 ###REPLACEME
-...
+aap_password: MzAyOTEx
+aap_service_account_password: MzAyOTEx
+student_account: lab-user
+vault_pass: cascLB2193

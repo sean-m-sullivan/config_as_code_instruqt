@@ -1,6 +1,6 @@
 ---
 ee_list:
-  - name: "config_as_code"
+  - name: "{{ aap_hostname }}/config_as_code"
     pull: always
     dependencies:
       galaxy:
@@ -28,13 +28,11 @@ ee_list:
 ee_build_arg_defaults:
   ANSIBLE_GALAXY_CLI_COLLECTION_OPTS: '-vvvv'
 
-
-
 prepend_galaxy:
   - COPY _build/configs/ansible.cfg /etc/ansible/ansible.cfg
 
 ee_base_image: "{{ aap_hostname }}/ee-minimal-rhel8:latest"
-ee_image_push: true
+ee_image_push: false
 ee_prune_images: false
 ee_create_ansible_config: false
 ee_pull_collections_from_hub: false

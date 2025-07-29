@@ -10,7 +10,6 @@ controller_templates:
     verbosity: 0
     credentials:
       - aap_admin
-      - ah_token_user
       - vault
 
   - name: build_execution_environments
@@ -22,6 +21,7 @@ controller_templates:
     concurrent_jobs_enabled: false
     verbosity: 0
     credentials:
-      - root
-      - ah_admin_user_pass
+      - aap_admin
+      - hub_service_account
+      - vault
 ...
